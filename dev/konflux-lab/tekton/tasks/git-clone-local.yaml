@@ -12,8 +12,9 @@ spec:
       description: Workspace where the repo will be cloned
   steps:
     - name: clone
-      image: registry.access.redhat.com/ubi9/git
+      image: registry.access.redhat.com/ubi9/ubi:latest
       script: |
         set -eux
+        dnf install -y git
         git clone $(params.repo_url) $(workspaces.source.path)
 
