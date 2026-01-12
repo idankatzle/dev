@@ -1,3 +1,4 @@
+---
 apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
@@ -9,7 +10,7 @@ spec:
       description: Git repository URL
     - name: image
       type: string
-      description: Image destination (registry/namespace/name:tag)
+      description: Full image destination (registry/namespace/name:tag)
 
   workspaces:
     - name: source
@@ -36,4 +37,3 @@ spec:
       workspaces:
         - name: source
           workspace: source
-
