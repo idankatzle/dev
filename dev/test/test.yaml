@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-new    # שם חדש כדי שלא יתנגש בישן
+  namespace: idankatz-dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-web
+      env: dev
+      role: frontend
+  template:
+    metadata:
+      labels:
+        app: my-web
+        env: dev
+        role: frontend
+    spec:
+      containers:
+      - name: parksmap
+        image: image-registry.openshift-image-registry.svc:5000/idankatz-dev/konflux-lab:latest
+        ports:
+        - containerPort: 8080
